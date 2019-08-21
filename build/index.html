@@ -4,24 +4,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
     <title>Мишка</title>
   </head>
   <body>
     <head class="page-header">
       <nav class="main-navigation">
-        <ul class="main-navigation__list-">
+        <button class="toggler toggler--open">
+          toggle
+        </button>
+        <a href="" class="logo main-navigation__logo"
+          ><img
+            src="image/pictureSVG/logo-mobile.svg"
+            alt="Логотип"
+            class="logo"
+        /></a>
+        <ul class="main-navigation__list">
           <li class="main-navigation__item">
-            <a href="" class="logo"><img src="" alt="Логотип"/></a>
+            <a href="" class="main-navigation__link">Каталог товаров</a>
           </li>
-          <li class="main-navigation__item"><a href="">Каталог товаров</a></li>
-          <li class="main-navigation__item"><a href="">Вязание на заказ</a></li>
           <li class="main-navigation__item">
-            <a href="">Новые поступления</a>
+            <a href="" class="main-navigation__link">Вязание на заказ</a>
           </li>
-          <li class="main-navigation__item"><a href="">Распродажа</a></li>
-          <li class="main-navigation__item"><a href="">Поиск по сайту</a></li>
+          <li class="main-navigation__item main-navigation__item--down">
+            <a href="" class="main-navigation__link">Новые поступления</a>
+          </li>
+          <li class="main-navigation__item main-navigation__item--down">
+            <a href="" class="main-navigation__link">Распродажа</a>
+          </li>
           <li class="main-navigation__item">
-            <a href="">Корзина: пока пуста</a>
+            <a href="" class="main-navigation__link">
+              <svg class="main-navigation__icon main-navigation__icon--search">
+                <use xlink:href="./image/sprite/sprite.svg#search"></use>
+              </svg>
+              Поиск по сайту</a
+            >
+          </li>
+          <li class="main-navigation__item">
+            <a href="" class="main-navigation__link">
+              <svg class="main-navigation__icon main-navigation__icon--cart">
+                <use xlink:href="./image/sprite/sprite.svg#cart"></use>
+              </svg>
+              Корзина: пока пуста</a
+            >
           </li>
         </ul>
       </nav>
@@ -119,13 +144,13 @@
       </p>
     </main>
     <footer>
-        <a href="" class="logo"><img src="" alt="Логотип"></a>
-        <ul class="socials">
-            <li class="socials__item"><a href="">Инстаграм</a></li>
-            <li class="socials__item"><a href="">Фейсбук</a></li>
-            <li class="socials__item"><a href="">Твиттер</a></li>
-        </ul>
-        <p>Рекалама</p>
+      <a href="" class="logo"><img src="" alt="Логотип"/></a>
+      <ul class="socials">
+        <li class="socials__item"><a href="">Инстаграм</a></li>
+        <li class="socials__item"><a href="">Фейсбук</a></li>
+        <li class="socials__item"><a href="">Твиттер</a></li>
+      </ul>
+      <p>Рекалама</p>
     </footer>
   </body>
 </html>
