@@ -58,10 +58,11 @@ function js() {
 }
 
 function picture(){
-  return src("./src/image/**/*.{png,jpg}")
+  return src(["./src/image/**/*.{png,jpg}","./src/image/pictureSVG/*.svg"], { base:"./src/image/" })
     .pipe(gulpif(isProd, imagemin([
       imagemin.jpegtran({progressive: true}), // Прогрессивное отображение jpg
-      imagemin.optipng({optimizationLevel: 3})
+      imagemin.optipng({optimizationLevel: 3}),
+      imagemin.svgo()
   ])))
     .pipe(dest("./build/image"))
     .pipe(webp({quality:90}))
@@ -81,7 +82,11 @@ function svgInlineSprite(){ // создает спрайты для встави
 
   return src("./src/image/sprite/*.svg")
     .pipe(imagemin([
-      imagemin.svgo() // оптимизация svg
+      imagemin.svgo({plugins: [{
+        removeAttrs: {
+          attrs: 'path:fill' // удаляет всe fill атрибуты внутри path
+        }
+    }]}) // оптимизация svg
     ]))
     .pipe(svgSprite(svgConfig))
     .pipe(dest("./build/image/sprite"))
@@ -102,12 +107,20 @@ function svgCSS(){ // создает спрайты для встравиван�
           }
         }
       }
+    },
+    svg:{
+      namespaceIDs:false
     }
+
   }
 
   return src("./src/image/css/*.svg")
     .pipe(imagemin([
-      imagemin.svgo()
+      imagemin.svgo({plugins: [{
+        removeAttrs: {
+          attrs: ["width","height","g:fill", 'path:fill'] // удаляет width и height атрибуты (баг при конвертировании из ai в svg)
+        }
+    }]})
     ]))
     .pipe(svgSprite(svgConfig))
     .pipe(dest("./build/image/css"))
@@ -120,10 +133,10 @@ function watcher() {
       }
     });
 
-  watch("./src/**/*.css", styles);
+  watch("./src/**/*.{less,css}", styles);
   watch("./src/index.html", html);
   watch("./src/**/*.js", js);
-  watch("./src/image/**/*.{png,jpg}", picture)
+  watch(["./src/image/**/*.{png,jpg}","./src/image/pictureSVG/*.svg"], picture)
   watch("./src/image/sprite/*.svg", svgInlineSprite)
   watch("./src/image/CSS/*.svg", svgCSS)
 }
