@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="style.css" />
+    <script src="./scripts/svg4everybody.min.js"></script>
+    <script src="./scripts/picturefill.min.js"></script>
     <title>Мишка</title>
   </head>
   <body>
@@ -17,19 +19,19 @@
           <ul class="main-navigation__list">
             <li class="main-navigation__item main-navigation__item--logo">
               <a href="" class="logo logo--header main-navigation__logo"
-                ><picture>
+                ><picture class="main-navigation__logo-Inner">
                   <source
                     media="(min-width:1150px)"
-                    srcset="image/pictureSVG/logo-desktop.svg"
+                    srcset="image/content-SVG/logo-desktop.svg"
                     alt="Логотип"
                   />
                   <source
                     media="(min-width:768px)"
-                    srcset="image/pictureSVG/logo-tablet.svg"
+                    srcset="image/content-SVG/logo-tablet.svg"
                     alt="Логотип"
                   />
                   <img 
-                    src="image/pictureSVG/logo-mobile.svg" 
+                    src="image/content-SVG/logo-mobile.svg" 
                     alt="Логотип"
                     class="logo__image"
                   />
@@ -72,7 +74,7 @@
                 <svg
                   class="main-navigation__icon main-navigation__icon--search"
                 >
-                  <use xlink:href="./image/sprite/sprite.svg#search"></use>
+                  <use xlink:href="./image/spriteSVG/sprite.svg#search"></use>
                 </svg>
                 Поиск по сайту</a
               >
@@ -83,7 +85,7 @@
                 class="main-navigation__link main-navigation__link--cart"
               >
                 <svg class="main-navigation__icon main-navigation__icon--cart">
-                  <use xlink:href="./image/sprite/sprite.svg#cart"></use>
+                  <use xlink:href="./image/spriteSVG/sprite.svg#cart"></use>
                 </svg>
                 Корзина: пока пуста</a
               >
@@ -146,17 +148,14 @@
           </tr>
         </table>
 
-        <p class="week-product__price">Цена: 990 руб.</p>
-        <a href="" class="button week-product__button">Заказать</a>
-
         <p class="week-product__logo">
           <picture>
             <source
               type="image/webp"
               media="(min-width:1150px)"
               srcset="
-                ./image/triple-set-desktop@2x.webp 2x,
-                ./image/triple-set-desktop.webp    1x
+                ./image/content-picture/triple-set-desktop@2x.webp 2x,
+                ./image/content-picture/triple-set-desktop.webp    1x
               "
               alt="Товар недели"
               class="week-product__image"
@@ -164,8 +163,8 @@
             <source
               media="(min-width:1150px)"
               srcset="
-                ./image/triple-set-desktop@2x.jpg 2x,
-                ./image/triple-set-desktop.jpg    1x
+                ./image/content-picture/triple-set-desktop@2x.jpg 2x,
+                ./image/content-picture/triple-set-desktop.jpg    1x
               "
               alt="Товар недели"
               class="week-product__image"
@@ -174,8 +173,8 @@
               type="image/webp"
               media="(min-width:768px)"
               srcset="
-                ./image/triple-set-tablet@2x.webp 2x,
-                ./image/triple-set-tablet.webp    1x
+                ./image/content-picture/triple-set-tablet@2x.webp 2x,
+                ./image/content-picture/triple-set-tablet.webp    1x
               "
               alt="Товар недели"
               class="week-product__image"
@@ -183,8 +182,8 @@
             <source
               media="(min-width:768px)"
               srcset="
-                ./image/triple-set-tablet@2x.jpg 2x,
-                ./image/triple-set-tablet.jpg    1x
+                ./image/content-picture/triple-set-tablet@2x.jpg 2x,
+                ./image/content-picture/triple-set-tablet.jpg    1x
               "
               alt="Товар недели"
               class="week-product__image"
@@ -193,20 +192,23 @@
               type="image/webp"
               media="(min-width:320px)"
               srcset="
-                ./image/triple-set-mobile@2x.webp 2x,
-                ./image/triple-set-mobile.webp    1x
+                ./image/content-picture/triple-set-mobile@2x.webp 2x,
+                ./image/content-picture/triple-set-mobile.webp    1x
               "
               alt="Товар недели"
               class="week-product__image"
             />
             <img
-              srcset="./image/triple-set-mobile@2x.jpg 2x"
-              src="./image/triple-set-mobile.jpg"
+              srcset="./image/content-picture/triple-set-mobile@2x.jpg 2x"
+              src="./image/content-picture/triple-set-mobile.jpg"
               alt="Товар недели"
               class="week-product__image"
             />
           </picture>
         </p>
+
+        <p class="week-product__price">Цена: 990 руб.</p>
+        <a href="" class="button week-product__button">Заказать</a>
       </section>
 
       <div class="wave" aria-hidden="true"></div>
@@ -303,41 +305,41 @@
                 type="image/webp"
                 media="(min-width:1150px)"
                 srcset="
-                  ./image/map-desktop@2x.webp 2x,
-                  ./image/map-desktop.webp    1x
+                  ./image/content-picture/map-desktop@2x.webp 2x,
+                  ./image/content-picture/map-desktop.webp    1x
                 "
                 alt="г. Санкт-Петербург, ул. Большая Конюшенная, д. 19/8, офис 101"
                 class="contacts__map-image"
               />
               <source
                 media="(min-width:1150px)"
-                srcset="./image/map-desktop@2x.jpg 2x, ./image/map-desktop.jpg 1x"
+                srcset="./image/content-picture/map-desktop@2x.jpg 2x, ./image/content-picture/map-desktop.jpg 1x"
                 alt="г. Санкт-Петербург, ул. Большая Конюшенная, д. 19/8, офис 101"
                 class="contacts__map-image"
               />
               <source
                 type="image/webp"
                 media="(min-width:768px)"
-                srcset="./image/map-tablet@2x.webp 2x, ./image/map-tablet.webp 1x"
+                srcset="./image/content-picture/map-tablet@2x.webp 2x, ./image/content-picture/map-tablet.webp 1x"
                 alt="г. Санкт-Петербург, ул. Большая Конюшенная, д. 19/8, офис 101"
                 class="contacts__map-image"
               />
               <source
                 media="(min-width:768px)"
-                srcset="./image/map-tablet@2x.jpg 2x, ./image/map-tablet.jpg 1x"
+                srcset="./image/content-picture/map-tablet@2x.jpg 2x, ./image/content-picture/map-tablet.jpg 1x"
                 alt="г. Санкт-Петербург, ул. Большая Конюшенная, д. 19/8, офис 101"
                 class="contacts__map-image"
               />
               <source
                 type="image/webp"
                 media="(min-width:320px)"
-                srcset="./image/map-mobile@2x.webp 2x, ./image/map-mobile.webp 1x"
+                srcset="./image/content-picture/map-mobile@2x.webp 2x, ./image/content-picture/map-mobile.webp 1x"
                 alt="г. Санкт-Петербург, ул. Большая Конюшенная, д. 19/8, офис 101"
                 class="contacts__map-image"
               />
               <img
-                srcset="./image/map-mobile@2x.jpg 2x"
-                src="./image/map-mobile.jpg"
+                srcset="./image/content-picture/map-mobile@2x.jpg 2x"
+                src="./image/content-picture/map-mobile.jpg"
                 alt="г. Санкт-Петербург, ул. Большая Конюшенная, д. 19/8, офис 101"
                 class="contacts__map-image"
               />
@@ -351,7 +353,7 @@
       <div class="footer__inner container">
         <a href="" class="logo footer__logo-link"
           ><svg class="footer__logo" width="102" height="34">
-            <use xlink:href="./image/sprite/sprite.svg#logo-footer"></use>
+            <use xlink:href="./image/spriteSVG/sprite.svg#logo-footer"></use>
           </svg>
         </a>
         <ul class="socials footer__socials">
@@ -362,7 +364,7 @@
                 width="22"
                 height="21"
               >
-                <use xlink:href="./image/sprite/sprite.svg#instagram"></use>
+                <use xlink:href="./image/spriteSVG/sprite.svg#instagram"></use>
               </svg>
               <span class="visually-hidden">Инстаграм</span></a
             >
@@ -374,7 +376,7 @@
                 width="15"
                 height="28"
               >
-                <use xlink:href="./image/sprite/sprite.svg#facebook"></use>
+                <use xlink:href="./image/spriteSVG/sprite.svg#facebook"></use>
               </svg>
               <span class="visually-hidden">Фейсбук</span></a
             >
@@ -386,13 +388,13 @@
                 width="23"
                 height="20"
               >
-                <use xlink:href="./image/sprite/sprite.svg#twitter"></use>
+                <use xlink:href="./image/spriteSVG/sprite.svg#twitter"></use>
               </svg>
               <span class="visually-hidden">Твиттер</span></a
             >
           </li>
         </ul>
-        <p class="footer__nothing">Рекалама</p>
+        <p class="footer__nothing">Реклама</p>
       </div>
     </footer>
   </body>
