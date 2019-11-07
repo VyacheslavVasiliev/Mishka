@@ -1,0 +1,119 @@
+.product {
+  margin-bottom: 28px;
+
+  background-color: #f9f9f9;
+  background-image: url("./image/background-picture/hero-mobile.jpg");
+  background-size: 320px auto;
+  background-repeat: no-repeat;
+  background-position: center -17px;
+  @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+    background-image: url("./image/background-picture/hero-mobile@2x.jpg");
+  }
+
+  @media (min-width: 768px) {
+    margin-bottom: 45px;
+
+    background-image: url("./image/background-picture/hero-tablet.jpg");
+    background-size: 768px auto;
+    background-repeat: no-repeat;
+    background-position: center 0px;
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+      background-image: url("./image/background-picture/hero-tablet@2x.jpg");
+    }
+
+    // Добавляет волну
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      left: -14px;
+      bottom: -1px;
+      right: 0;
+      background-repeat: repeat;
+      height: 10px;
+      background-size: 20px 20px;
+      background-image: radial-gradient(
+        circle at 10px -5px,
+        transparent 12px,
+        #ffffff 13px
+      );
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      left: 6px;
+      bottom: -2px;
+      right: 0;
+      background-repeat: repeat;
+      height: 16px;
+      background-size: 40px 20px;
+      background-image: radial-gradient(
+        circle at 10px 15px,
+        #ffffff 12px,
+        transparent 13px
+      );
+    }
+  }
+  @media (min-width: 1150px) {
+    margin-bottom: 70px;
+
+    background-image: url("./image/background-picture/hero-desktop.jpg");
+    background-size: 1150px auto;
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+      background-image: url("./image/background-picture/hero-desktop@2x.jpg");
+    }
+  }
+}
+
+.product__delivery {
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+
+    align-self: flex-end;
+
+    padding: 18px 0;
+    margin-bottom: 95px;
+
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: right;
+
+    color: #444444;
+  }
+}
+
+.product__desc {
+  display: block;
+  margin: 0;
+  padding-top: 70px;
+  padding-left: 30px;
+  padding-right: 30px;
+
+  min-height: 280px;
+
+  text-align: center;
+  font-size: 27px;
+  line-height: 30px;
+
+  @media (min-width: 768px) {
+    background: none;
+
+    padding: 0 85px;
+
+    min-height: 471px;
+
+    font-size: 43px;
+    line-height: 50px;
+  }
+
+  @media (min-width: 1150px) {
+    font-size: 53px;
+    line-height: 57px;
+  }
+}

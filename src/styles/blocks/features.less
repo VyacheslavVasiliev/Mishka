@@ -1,0 +1,166 @@
+.features {
+  font-weight: 700;
+
+  color: @titleTextColor;
+  margin-bottom: 55px;
+  @media (min-width: 768px) {
+    margin-bottom: 25px;
+  }
+
+  @media (min-width: 1150px) {
+    margin-bottom: 40px;
+  }
+}
+
+.features__inner {
+  max-width: 320px;
+
+  margin-right: auto;
+  margin-left: auto;
+  @media (min-width: 768px) {
+    max-width: none;
+    margin: 0;
+  }
+  @media (min-width: 1150px) {
+    padding: 0 16.667%;
+  }
+}
+
+.features__caption {
+  margin: 0;
+  margin-bottom: 30px;
+
+  font-size: 25px;
+  line-height: 30px;
+
+  @media (min-width: 768px) {
+    font-size: 43px;
+    line-height: 50px;
+
+    margin-bottom: 45px;
+  }
+  @media (min-width: 1150px) {
+    font-size: 53px;
+    line-height: 57px;
+  }
+}
+
+.features__list {
+  .listDrop();
+
+  font-size: 17px;
+  line-height: 20px;
+  @media (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+
+    font-size: 20px;
+    line-height: 22px;
+  }
+}
+
+.features__item {
+  position: relative;
+
+  display: block;
+  padding-top: 60px;
+  margin-bottom: 35px;
+
+  @media (min-width: 768px) {
+    width: 50%;
+
+    margin-bottom: 60px;
+  }
+}
+@media (max-width: 767px) {
+  .features__item:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .features__item--yarn {
+    order: 2;
+  }
+
+  .features__item--price {
+    order: 3;
+  }
+
+  .features__item--rocket {
+    order: 4;
+  }
+
+  .features__item--heart {
+    order: 5;
+  }
+
+  .features__item--present {
+    order: 6;
+  }
+}
+.features__item::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  background-image: @svgCssSprite;
+  background-repeat: no-repeat;
+}
+
+.features__item--flower::before {
+  background-position: 0 100%;
+
+  width: 32px;
+  height: 37px;
+
+  left: 8px;
+}
+
+.features__item--price::before {
+  background-position: 73.52941176470588% 54.73684210526316%;
+
+  width: 47px;
+  height: 27px;
+
+  left: 0px;
+}
+
+.features__item--heart::before {
+  background-position: 44% 90.42553191489361%;
+
+  width: 33px;
+  height: 28px;
+
+  left: 7px;
+}
+
+.features__item--yarn::before {
+  background-position: 21.476510067114095% 96.5909090909091%;
+
+  width: 34px;
+  height: 34px;
+
+  left: 3px;
+}
+
+.features__item--rocket::before {
+  background-position: 0 62.62626262626262%;
+
+  width: 54px;
+  height: 23px;
+
+  left: -6px;
+}
+
+.features__item--present::before {
+  background-position: 100% 0;
+
+  width: 33px;
+  height: 32px;
+
+  left: 3px;
+}

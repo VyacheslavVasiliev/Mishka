@@ -1,0 +1,61 @@
+.toggler {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+
+  height: 80px;
+  width: 80px;
+
+  border: none;
+  background-color: transparent;
+
+  padding: 0;
+
+  text-indent: 1000px;
+  overflow: hidden;
+}
+
+.toggler:active {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.toggler--open::before,
+.toggler--open::after {
+  content: "";
+  position: absolute;
+
+  top: 37px;
+  left: 28px;
+
+  width: 27px;
+  height: 2px;
+
+  background-color: #000000;
+}
+.toggler--open::before {
+  transform: rotate(45deg);
+}
+.toggler--open::after {
+  transform: rotate(-45deg);
+}
+
+.toggler--close::before {
+  content: "";
+  position: absolute;
+
+  top: 33px;
+  left: 30px;
+
+  width: 20px;
+  height: 2px;
+
+  background-color: #000000;
+
+  box-shadow: 0 6px 0px #000000, 0 12px 0px #000000;
+}
+
+@media (min-width: 768px) {
+  .toggler {
+    display: none;
+  }
+}

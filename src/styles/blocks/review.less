@@ -1,0 +1,131 @@
+.review {
+  color: @informTextColor;
+  margin-bottom: 45px;
+  @media (min-width: 768px) {
+    margin-bottom: 68px;
+  }
+}
+
+.review__wrapper {
+  @media (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 80px 50px 45px;
+
+    background-image: url("./image/background-picture/review.jpg");
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+      background-image: url("./image/background-picture/review.jpg@2x.jpg");
+    }
+    background-position: 0 0;
+    background-repeat: no-repeat;
+  }
+  @media (min-width: 1150px) {
+    padding: 80px 0px 70px 175px;
+  }
+}
+
+@media (min-width: 768px) {
+  .review__title,
+  .review__button {
+    order: -1;
+  }
+}
+
+.review__title {
+  margin: 0;
+  margin-bottom: 20px;
+
+  font-size: 25px;
+  font-weight: 700px;
+  line-height: 30px;
+
+  color: @titleTextColor;
+
+  @media (min-width: 768px) {
+    width: 74%;
+
+    font-size: 43px;
+    line-height: 50px;
+    margin-bottom: 50px;
+  }
+  @media (min-width: 1150px) {
+    width: 80%;
+    font-size: 53px;
+    line-height: 57px;
+  }
+}
+
+.review__button {
+  @media (min-width: 768px) {
+    width: 26%;
+    align-self: center;
+    margin-bottom: 50px;
+  }
+  @media (min-width: 1150px) {
+    width: 20%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.review__text {
+  margin: 0;
+  margin-bottom: 25px;
+
+  font-size: 15px;
+  font-weight: 400;
+
+  line-height: 30px;
+
+  @media (min-width: 768px) {
+    width: 100%;
+    margin-bottom: 55px;
+
+    font-size: 17px;
+  }
+  @media (min-width: 1150px) {
+    padding-right: 90px;
+  }
+}
+
+.review__autor {
+  margin: 0;
+  margin-bottom: 30px;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  line-height: 24px;
+
+  @media (min-width: 768px) {
+    width: 75%;
+    margin-bottom: 0px;
+
+    font-size: 18px;
+  }
+  @media (min-width: 1150px) {
+    width: 80%;
+  }
+}
+
+.review__autor-email {
+  font-weight: 400;
+
+  line-height: 30px;
+  @media (min-width: 768px) {
+    font-size: 17px;
+  }
+}
+
+.review__navigation {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 40px;
+  @media (min-width: 768px) {
+    width: 25%;
+    margin-bottom: 0;
+  }
+  @media (min-width: 1150px) {
+    width: 20%;
+  }
+}

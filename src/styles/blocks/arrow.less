@@ -1,0 +1,54 @@
+.arrow{
+    position: relative;
+
+    cursor: pointer;
+
+    display: inline-block;
+
+    min-height: 50px;
+    width: 50%;
+
+    padding: 0;
+
+    background-color: transparent;
+    border: 1px solid #ececec;
+
+    text-indent: 1000px;
+    overflow: hidden;
+
+    @media (min-width: 768px) {
+        border: none;
+    }
+}
+
+.arrow::before{
+    content:"";
+
+    position: absolute;
+
+    top:50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);    
+    background-image: @svgCssSprite;
+    background-repeat: no-repeat;
+
+    width: 50px;
+	height: 26px;
+}
+
+.arrow:hover::before{
+    opacity: 0.6;
+}
+
+.arrow:active::before{
+    opacity: 0.3;
+}
+
+.arrow--left::before{
+    background-position: 75.18796992481202% 0;
+}
+
+.arrow--right::before{
+    background-position: 75.18796992481202% 27.083333333333332%;
+}

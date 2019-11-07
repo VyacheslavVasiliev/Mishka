@@ -1,0 +1,37 @@
+@media (min-width: 768px) {
+  .flag {
+    position: relative;
+  }
+
+  .flag::before {
+    content: "";
+    position: absolute;
+
+    top: 60px;
+    right: 95px;
+
+    width: 4px;
+    height: 80px;
+
+    background-color: #000000;
+    @media (min-width: 1150px) {
+      right: 0;
+      left: -100px;
+    }
+  }
+
+  .flag::after {
+    content: "";
+    position: absolute;
+
+    top: 64px;
+    right: 32px;
+
+    border: 20px solid transparent;
+    border-left: 40px solid @mainSiteColor;
+    @media (min-width: 1150px) {
+      right: 0;
+      left: -93px;
+    }
+  }
+}

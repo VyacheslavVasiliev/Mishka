@@ -1,0 +1,48 @@
+.logo--header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 80px;
+
+  
+  height: 80px;
+  @supports (display: initial) {
+    height: auto;
+  }
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+    min-height: 90px;
+    
+    height: 90px;
+    @supports (display: initial) {
+      height: auto;
+    }
+  }
+  @media (min-width: 1150px) {
+    justify-content: center;
+  }
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &:active {
+    opacity: 0.3;
+  }
+}
+
+.logo__image {
+  vertical-align: middle;
+
+  width: 86px;
+  height: 35px;
+  @media (min-width: 768px) {
+    width: 113px;
+    height: 46px;
+  }
+  @media (min-width: 1150px) {
+    width: 149px;
+    height: 72px;
+  }
+}

@@ -1,0 +1,137 @@
+.contacts__wrapper{
+  margin-bottom: 39px;
+  @media (min-width: 768px) {
+    margin-bottom: 55px;
+  }
+  @media (min-width: 1150px) {
+    margin-bottom: 105px;
+  }
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 1150px) {
+    padding-left: 175px;
+    display: block;
+  }
+}
+
+.contacts__inner {
+  padding: 0 30px;
+  margin-bottom: 35px;
+
+  @media (min-width: 768px) {
+    padding: 0 50px;
+    margin-bottom: 60px;
+  }
+  @media (min-width: 1150px) {
+    padding: 0px;
+    padding-top: 60px;
+
+    .floatLeft(); // через Float удобнее позиционировать кнопку;
+    width: 40%;
+  }
+}
+
+.contacts__title {
+  margin: 0;
+  padding: 0;
+
+  font-size: 18px;
+  line-height: 30px;
+
+  color: @titleTextColor;
+
+  @media (min-width: 768px) {
+    font-size: 43px;
+    line-height: 50px;
+    margin-bottom: 10px;
+  }
+  @media (min-width: 1150px) {
+    font-size: 53px;
+    line-height: 57px;
+  }
+}
+
+.contacts__table {
+  font-size: 15px;
+  line-height: 30px;
+
+  width: 100%;
+
+  border-spacing: 0 30px;
+
+  color: @informTextColor;
+  @media (min-width: 768px) {
+    display: block;
+    border-spacing: 25px 30px;
+    font-size: 17px;
+    margin-left: -25px;
+  }
+  @media (min-width: 1150px) {
+    display: initial;
+  }
+}
+
+.contacts__tbody {
+  @media (min-width: 768px) and (max-width: 1149px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.contacts__tr {
+  @media (min-width: 768px) and (max-width: 1149px) {
+    width: 50%;
+  }
+}
+
+.contacts__td {
+  vertical-align: top;
+}
+
+.contacts__email-link {
+  color: @informTextColor;
+  border-bottom: 1px solid @mainSiteColor;
+}
+
+.contacts__email-link:hover {
+  color: @mainSiteColor;
+}
+
+.contacts__email-link:active {
+  opacity: 0.3;
+}
+
+.contacts__button {
+  order: 1;
+
+  margin: 0 30px;
+
+  @media (min-width: 768px) {
+    margin: 0 auto;
+  }
+  @media (min-width: 1150px) {
+    .floatLeft();
+  }
+}
+
+.contacts__map {
+  display: flex;
+  justify-content: center;
+
+  margin: 0;
+  padding: 0;
+  margin-bottom: 40px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 55px;
+  }
+  @media (min-width: 1150px) {
+    margin-bottom: 0px;
+    float: right;
+    width: 60%;
+  }
+}
