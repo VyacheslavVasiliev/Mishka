@@ -26,7 +26,7 @@ function styles() {
   return src("./src/styles/style.less")
     .pipe(gulpif(isDev, sourcemaps.init()))
     .pipe(less())
-    .pipe(gcmq())
+    // .pipe(gcmq())
     .pipe(
       autoprefixer({
         cascade: false
