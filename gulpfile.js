@@ -19,7 +19,7 @@ const isProd = !isDev;
 const isSync = process.argv.includes("--sync");
 
 function clear() {
-  return del("./build/**");
+  return isDev? del(["./build/*.css","./build/index.html","./build/**/*.js"]): del("./build/**");
 }
 
 function styles() {
@@ -53,20 +53,38 @@ function html() {
 }
 
 function js() {
-  return src("./src/**/*.js")
-    .pipe(dest("./build/"));
+  return src("./src/scripts/**/*.js")
+    .pipe(dest("./build/scripts"));
 }
 
+// function picture(){
+//   return src(["./src/image/*.{png,jpg,svg}","./src/image/pictureSVG/*.svg"], { base:"./src/image/" })
+//     .pipe(gulpif(isProd, imagemin([
+//       imagemin.jpegtran({progressive: true}), // Прогрессивное отображение jpg
+//       imagemin.optipng({optimizationLevel: 3}),
+//       imagemin.svgo()
+//   ])))
+//     .pipe(dest("./build/image"))
+//     .pipe(webp({quality:90}))
+//     .pipe(dest("./build/image"))
+// }
+
 function picture(){
-  return src(["./src/image/*.{png,jpg,svg}","./src/image/pictureSVG/*.svg"], { base:"./src/image/" })
-    .pipe(gulpif(isProd, imagemin([
+  return src(["./src/image/**/*.{png,jpg}","./src/image/content-SVG/*.svg", './src/image/background-picture/*.svg'], { base:"./src/image/" })
+    .pipe(imagemin([
       imagemin.jpegtran({progressive: true}), // Прогрессивное отображение jpg
       imagemin.optipng({optimizationLevel: 3}),
-      imagemin.svgo()
-  ])))
+      imagemin.svgo({plugins: [{
+          removeViewBox: false
+        }]})
+  ]))
     .pipe(dest("./build/image"))
-    .pipe(webp({quality:90}))
-    .pipe(dest("./build/image"))
+}
+
+function webpPicture(){
+  return src("./src/image/content-picture/**/*", { base:"./src/image/content-picture/" })
+    .pipe( webp({quality:90}))
+    .pipe(dest("./build/image/content-picture/"))
 }
 
 function svgInlineSprite(){ // создает спрайты для вставиавния в html через use 
@@ -80,16 +98,16 @@ function svgInlineSprite(){ // создает спрайты для встави
     }
   }
 
-  return src("./src/image/sprite/*.svg")
+  return src("./src/image/spriteSVG/*.svg")
     .pipe(imagemin([
       imagemin.svgo({plugins: [{
         removeAttrs: {
           attrs: 'path:fill' // удаляет всe fill атрибуты внутри path
         }
-    }]}) // оптимизация svg
+    }]})
     ]))
     .pipe(svgSprite(svgConfig))
-    .pipe(dest("./build/image/sprite"))
+    .pipe(dest("./build/image/spriteSVG"))
 }
 
 function svgCSS(){ // создает спрайты для встравивания в css background
@@ -98,7 +116,7 @@ function svgCSS(){ // создает спрайты для встравиван�
     mode: {
       css: {
         bust: false,
-        dest:"./", // расположение svg фала
+        dest:"./", // уьирает лишнюю вложенность папок
         sprite:"./sprite.svg",
         render: {
           css: isDev // во время разработки появляется css файл, при минификации нет
@@ -110,18 +128,20 @@ function svgCSS(){ // создает спрайты для встравиван�
     }
   }
 
-  return src("./src/image/css/*.svg")
-    .pipe(imagemin([
-      imagemin.svgo(
-        {plugins: [{
-        removeAttrs: {
-          attrs: "clip-path" // clip-path обрезала пополам спрайты 
+  const svgoConfig = {
+          plugins: [{
+            removeAttrs: {
+              attrs: "clip-path" // clip-path обрезал пополам спрайты 
+            }
+          }]
         }
-      }]}
-      )
+
+  return src("./src/image/cssSpriteSVG/*.svg")
+    .pipe(imagemin([
+      imagemin.svgo(svgoConfig)
     ]))
     .pipe(svgSprite(svgConfig))
-    .pipe(dest("./build/image/css"))
+    .pipe(dest("./build/image/cssSpriteSVG"))
 }
 
 function watcher() {
@@ -134,11 +154,12 @@ function watcher() {
   watch("./src/**/*.{less,css}", styles);
   watch("./src/index.html", html);
   watch("./src/**/*.js", js);
-  watch(["./src/image/**/*.{png,jpg}","./src/image/pictureSVG/*.svg"], picture)
+  watch(["./src/image/**/*.{png,jpg}","./src/image/content-SVG/*.svg", './src/image/background-picture/*.svg'], picture)
   watch("./src/image/sprite/*.svg", svgInlineSprite)
   watch("./src/image/CSS/*.svg", svgCSS)
 }
 
-exports.build = series(clear, parallel(styles, html, picture, svgInlineSprite, svgCSS, fonts, js));
-exports.watch = series(clear, parallel(styles, html, picture, svgInlineSprite, svgCSS, fonts, js), watcher);
+exports.build = series(clear, parallel(styles, html, picture, webpPicture, svgInlineSprite, svgCSS, fonts, js));
+exports.watch = series(clear, parallel(styles, html, js,), watcher);
+exports.preflight = series(clear, parallel(styles, html, picture, webpPicture, svgInlineSprite, svgCSS, fonts, js));
 exports.test = svgCSS;
