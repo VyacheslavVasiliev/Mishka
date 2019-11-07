@@ -58,7 +58,7 @@ function js() {
 }
 
 function picture(){
-  return src(["./src/image/**/*.{png,jpg}","./src/image/pictureSVG/*.svg"], { base:"./src/image/" })
+  return src(["./src/image/*.{png,jpg,svg}","./src/image/pictureSVG/*.svg"], { base:"./src/image/" })
     .pipe(gulpif(isProd, imagemin([
       imagemin.jpegtran({progressive: true}), // Прогрессивное отображение jpg
       imagemin.optipng({optimizationLevel: 3}),
@@ -97,30 +97,28 @@ function svgCSS(){ // создает спрайты для встравиван�
   const svgConfig = {
     mode: {
       css: {
-        dest:"./", // удаление лишних вложенностей папок
+        bust: false,
+        dest:"./", // расположение svg фала
         sprite:"./sprite.svg",
         render: {
-          css: {
-            render: {
-                css: true // создание css файла с описание расположения каждого спрайта
-            }
-          }
+          css: isDev // во время разработки появляется css файл, при минификации нет
         }
       }
     },
     svg:{
       namespaceIDs:false
     }
-
   }
 
   return src("./src/image/css/*.svg")
     .pipe(imagemin([
-      imagemin.svgo({plugins: [{
+      imagemin.svgo(
+        {plugins: [{
         removeAttrs: {
-          attrs: ["width","height","g:fill", 'path:fill'] // удаляет width и height атрибуты (баг при конвертировании из ai в svg)
+          attrs: "clip-path" // clip-path обрезала пополам спрайты 
         }
-    }]})
+      }]}
+      )
     ]))
     .pipe(svgSprite(svgConfig))
     .pipe(dest("./build/image/css"))
@@ -143,3 +141,4 @@ function watcher() {
 
 exports.build = series(clear, parallel(styles, html, picture, svgInlineSprite, svgCSS, fonts, js));
 exports.watch = series(clear, parallel(styles, html, picture, svgInlineSprite, svgCSS, fonts, js), watcher);
+exports.test = svgCSS;
